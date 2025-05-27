@@ -1,0 +1,34 @@
+v 4
+file . "sad_ttb.vhdl" "b4ca611f9c83e7cb27e181085a4819f1a9508d5b" "20250527144743.078":
+  entity sad_ttb at 8( 273) + 0 on 95;
+  architecture behavioral of sad_ttb at 18( 461) + 0 on 96;
+file . "sad_bo.vhdl" "07f1a98390ed66c4aedc75e54da3f0baa6c55e57" "20250527161701.971":
+  entity sad_bo at 28( 1696) + 0 on 203;
+  architecture structure of sad_bo at 68( 3098) + 0 on 204;
+file . "mux_2to1.vhdl" "7dde5e6fab4e10a3b292c3b97574cf1097d20468" "20250527161701.849":
+  entity mux_2to1 at 12( 513) + 0 on 195;
+  architecture behavior of mux_2to1 at 32( 1229) + 0 on 196;
+file . "unsigned_adder.vhdl" "2d1071099fbad9e3a210a23c3c10fa8d2fe91dee" "20250527161701.795":
+  entity unsigned_adder at 12( 492) + 0 on 191;
+  architecture arch of unsigned_adder at 33( 1264) + 0 on 192;
+file . "sad_bc.vhdl" "555a2622f2ac366ab69a9ef4c5d0cf671040e63c" "20250527161701.938":
+  entity sad_bc at 20( 1102) + 0 on 201;
+  architecture behavior of sad_bc at 45( 2003) + 0 on 202;
+file . "sad_pack.vhdl" "a1cb32326e8a72996e440c9a8f1882ba5ce54704" "20250527161701.910":
+  package sad_pack at 14( 715) + 0 on 199 body;
+  package body sad_pack at 75( 4116) + 0 on 200;
+file . "sad.vhdl" "f56be9e6214df58c9e29822493e08d6aa10a3ed8" "20250527144743.006":
+  entity sad at 33( 2266) + 0 on 93;
+  architecture structure of sad at 78( 4253) + 0 on 94;
+file . "unsigned_register.vhdl" "5bb0add1d0cbf3c8ff12fc8edebdf8de5f303f90" "20250527161701.822":
+  entity unsigned_register at 13( 576) + 0 on 193;
+  architecture behavior of unsigned_register at 34( 1358) + 0 on 194;
+file . "absolute_difference.vhdl" "7a6699629323959b0d10bd500c697a0bd9580b8e" "20250527161701.879":
+  entity absolute_difference at 11( 431) + 0 on 197;
+  architecture structure of absolute_difference at 35( 1263) + 0 on 198;
+file . "tsinais.vhdl" "d9452dacba3b25abc7aef7d7837eb961cba49948" "20250523182358.256":
+  package tsinais at 1( 0) + 0 on 69;
+  package body tsinais at 16( 294) + 0 on 70;
+file . "tb_sad_bo.vhdl" "27c41f3c2f7f69f1a79d27af34265dee70d88c0e" "20250527161702.003":
+  entity tb_sad_bo at 1( 0) + 0 on 205;
+  architecture test of tb_sad_bo at 9( 134) + 0 on 206;
