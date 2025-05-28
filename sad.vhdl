@@ -76,10 +76,18 @@ end entity sad;
 
 -- Não alterar o nome da arquitetura!
 architecture structure of sad is
-	signal menor,minor : std_logic;
-	signal sci,szi,scpa,scpb,szsoma,scsoma,scsad : std_logic;
-     
+	signal sci,szi,scpa,scpb,szsoma,scsoma,scsad,menor : std_logic;
+	signal cont,P : integer;
 begin
+    
+    logbase2_i : entity work.logbase2
+		generic map(
+				bits_per_sample   => bits_per_sample,
+				samples_per_block => samples_per_block,
+				parallel_samples  => parallel_samples
+		)
+		port map( cont => cont, P => P);
+    
     bc : entity work.sad_bc
 		port map(
 			clk    => clk,
@@ -96,27 +104,31 @@ begin
             csoma => scsoma,
             csad => scsad  
 		);
-    menor <= minor;
-    --done <= sonic;
+    
 	bo : entity work.sad_bo
+	    	generic map(
+				bits_per_sample   => bits_per_sample,
+				samples_per_block => samples_per_block,
+				parallel_samples  => parallel_samples
+		)
 	    port map(
 	       clk => clk,
 	       sample_ori => sample_ori,
 	       sample_can => sample_can,
 	       address => address,
 	       sad => sad_value,
-	       menor => minor,
+	       menor => menor,
 	       ci => sci,
             zi => szi,
             cpa => scpa,   
             cpb => scpb,  
             zsoma => szsoma,
             csoma => scsoma,
-            csad => scsad  
+            csad => scsad,
+            cont => cont,
+            P => P
 	    );
-
-
-
+    
 
 	-- Há duas opções para a implementação. 
 	-- 1) Uma delas é usando um wrapper (para agrupar os sinais de controle em records).
