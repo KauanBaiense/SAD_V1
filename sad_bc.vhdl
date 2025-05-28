@@ -18,6 +18,7 @@
 --------------------------------------------------
 
 library ieee;
+use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
 
 -- Bloco de Controle (BC) do circuito SAD.
@@ -48,10 +49,9 @@ architecture behavior of sad_bc is
     );
     signal estado: estados_t;
 
-    signal cont : std_logic := '0';
     
 begin   
-  LPE : process(clk,rst_a)
+  LPE : process(clk,rst_a,enable,menor)
         begin
             if rst_a = '1' then
                 estado <= s0;
@@ -62,7 +62,6 @@ begin
                             estado <= s1;
                         elsif enable = '0' then
                             estado <= s0;
-                            --done <= '1';
                         end if;
                     when s1 =>
                         estado <= s2;
@@ -80,28 +79,39 @@ begin
                         estado <= s0;
                 end case;
             end if;
-    end process LPE;
-
- LS: process(estado)
-     begin
-        done  <= '1' when estado = s0 else '0';
     
-        ci     <= '1' when estado = s1 else '0';
+    end process LPE;
+    
+  LS: process(estado)
+     begin
+ 
+        done  <= '1' when estado = s0 else '0';
+        ci <= '0' when estado = s0;
+        csoma <= '0' when estado = s0;
+        ci     <= '1' when estado = s1;
+        csoma  <= '0' when estado = s1;
         zi     <= '1' when estado = s1 else '0';
         csoma  <= '1' when estado = s1 else '0';
         zsoma  <= '1' when estado = s1 else '0';
-    
+        
+        ci <= '0' when estado = s2;
+        csoma <= '0' when estado = s2;
+
         cpa     <= '1' when estado = s3 else '0';
         cpb     <= '1' when estado = s3 else '0';
         read_mem <= '1' when estado = s3 else '0';
-        
-        csoma  <= '1' when estado = s4 else '0';
-        ci     <= '1' when estado = s4 else '0';
+        ci <= '0' when estado = s3;
+        csoma <= '0' when estado = s3;
+
+        csoma  <= '1' when estado = s4;
+        ci     <= '1' when estado = s4;
     
         csad   <= '1' when estado = s5 else '0';
+        ci <= '0' when estado = s5;
+        csoma <= '0' when estado = s5;
+
     end process LS;
     
-
     -- Descreva a FSM responsável por coordenar o circuito SAD.
     
     -- Dica: separar em 3 processos:
