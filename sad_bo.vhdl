@@ -61,8 +61,6 @@ entity sad_bo is
         csad  : in std_logic;
         cont : in integer;
         p : in integer
-        --rst_a : in std_logic
-		-- não esqueça de colocar o ; no final da linha que declara o clk :)
 	);
 end entity;
 -- Não altere o nome da entidade! Como você quem irá instanciar, neste caso podes
